@@ -1,5 +1,6 @@
 <?php
    include("includes/config.php");
+   echo "maybe session start aint workin";
    session_start();
    echo "before the if";
    if ($_SERVER["REQUEST_METHOD"] == "GET") {
