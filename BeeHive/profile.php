@@ -51,7 +51,7 @@
         <div class="item active">
             <div class="container">
                 <div class="carousel-caption">
-                    <h1>User Name</h1>
+                    <h1>test_user@example.com</h1>
                 </div>
             </div>
         </div>

@@ -2,7 +2,15 @@
 	require_once("includes/config.php");
 	$fileExistsFlag = 0; 
 	$fileName = $_FILES['Filename']['name'];
-	//$link = mysqli_connect("localhost","root","team8","Beehive") or die("Error ".mysqli_error($link));
+	$fileExt = array(".gif", ".mp4", ".wav", ".mov");
+	$fileTypeFlag = 0;
+	
+	foreach ($fileExt as $ext) {
+		if (strpos($fileName, $ext) !== false) {
+			$fileTypeFlag = 1;
+		}
+	}
+
 	/* 
 	*	Checking whether the file already exists in the destination folder 
 	*/
@@ -30,6 +38,9 @@
 		/*
 		*	If file was successfully uploaded in the destination folder
 		*/
+		if ($fileExistsFlag !== 0) {
+			echo "The file type provided is not a valid video file";
+		} else {
 		if($result) { 
 			echo "Your file <html><b><i>".$fileName."</i></b></html> has been successfully uploaded";	
 			$query = "INSERT INTO Videos(name,file,email,vid_length,explicit,upload_time,description) VALUES ('$fileName','$fileTarget','test_user@example.com','000001','False',$t,'$fileDescription')";
@@ -38,8 +49,8 @@
 			echo "Sorry !!! There was an error in uploading your file";	
 		}
 		mysqli_close($link);
-	}
-	
+		} 		
+	}	
 	/*
 	* If file is already present in the destination folder
 	*/

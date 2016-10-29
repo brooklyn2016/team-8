@@ -20,8 +20,8 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="profile.php">Profile<span class="sr-only">(current)</span></a></li>
-                <li><a href="upload.form.php">Upload</a></li>
+                <li><a href="profile.php">Profile</a></li>
+                <li class="active"><a href="upload.form.php">Upload<span class="sr-only">(current)</span></a></li>
                 <li><a href="search.php">Search</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
