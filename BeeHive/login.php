@@ -5,8 +5,8 @@
    echo "before the if";
    if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
-        $myusername = $_POST['username'] ;
-        $mypassword = $_POST['password'] ;
+        $myusername = $_GET['username'] ;
+        $mypassword = $_GET['password'] ;
 
         echo "the if is executed";
         // username and password sent from form
