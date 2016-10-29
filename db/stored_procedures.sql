@@ -1,11 +1,19 @@
 DELIMITER //
-
 CREATE PROCEDURE user_videos(IN user VARCHAR(255))
 BEGIN
 	SELECT * 
 	FROM Videos 
 	WHERE email = user;
-END //
+END//
+
+DELIMITER //
+CREATE PROCEDURE user_profile(IN user VARCHAR(255))
+BEGIN
+	SELECT Users.name, Users.picture, Videos.file
+	FROM Videos LEFT JOIN Users ON Users.email = Videos.email
+	WHERE Users.email = USER;
+END//
+
 
 CREATE PROCEDURE get_top_tags()
 BEGIN
@@ -17,9 +25,7 @@ BEGIN
 		ORDER BY frequency DESC
 		LIMIT 5;
 		)
-	WHERE Tags(tag_id) = Video_Tag_Detail(tag_id);
+	WHERE Tags.tag_id = Video_Tag_Detail.tag_id;
 END //
-
-DELIMITER ;
 
 
