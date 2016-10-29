@@ -1,42 +1,43 @@
-<?php
-   include("includes/config.php");
-   echo "maybe session start aint workin";
-   session_start();
-   echo "before the if";
-   if ($_SERVER["REQUEST_METHOD"] == "GET") {
-
-        $myusername = $_GET['username'] ;
-        $mypassword = $_GET['password'] ;
-
-        echo "the if is executed";
-        // username and password sent from form
-      
-      //$myusername = mysqli_real_escape_string($dbc, $_GET['username']);
-      //$mypassword = mysqli_real_escape_string($dbc, $_GET['password']);
-      
-      $sql = "SELECT * FROM Users WHERE username = '$myusername' and password = '$mypassword'";
-      $result = mysqli_query($db,$sql);
-      $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-      $active = $row['active'];
-      
-      $count = mysqli_num_rows($result);
-      echo $count;      
-
-      // If result matched $myusername and $mypassword, table row must be 1 row
-		
-      if ($count == 1) {
-         session_register("myusername");
-         $_SESSION['login_user'] = $myusername;
-         
-         //header("location: welcome.php");
-	 echo "HELLO";
-      }else {
-         $error = "Your Login Name or Password is invalid";
-      }
-   }
-?>
 <html>
-   
+   <div class = "container">
+    <?php
+       include("includes/config.php");
+       echo "maybe session start aint workin";
+       session_start();
+       echo "before the if";
+       if ($_SERVER["REQUEST_METHOD"] == "GET") {
+
+            $myusername = $_GET['username'] ;
+            $mypassword = $_GET['password'] ;
+
+            echo "the if is executed";
+            // username and password sent from form
+
+          //$myusername = mysqli_real_escape_string($dbc, $_GET['username']);
+          //$mypassword = mysqli_real_escape_string($dbc, $_GET['password']);
+
+          $sql = "SELECT * FROM Users WHERE username = '$myusername' and password = '$mypassword'";
+          $result = mysqli_query($db,$sql);
+          $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+          $active = $row['active'];
+
+          $count = mysqli_num_rows($result);
+          echo $count;
+
+          // If result matched $myusername and $mypassword, table row must be 1 row
+
+          if ($count == 1) {
+             session_register("myusername");
+             $_SESSION['login_user'] = $myusername;
+
+             //header("location: welcome.php");
+    	 echo "HELLO";
+          }else {
+             $error = "Your Login Name or Password is invalid";
+          }
+       }
+    ?>
+   </div>
    <head>
       <title>Login Page</title>
       
