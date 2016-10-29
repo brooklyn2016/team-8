@@ -107,8 +107,28 @@
 <!-- Wrap the rest of the page in another container to center all the content. -->
 
 <div class="container marketing">
+	<div class="row">
+	<?php
+                require_once('includes/config.php');
+                $query = 'SELECT * FROM Videos WHERE email="test_user@example.com"';
+                if ($result = mysqli_query($link, $query)) {
 
-  <!-- Three columns of text below the carousel -->
+                        while ($row = mysqli_fetch_assoc($result)) {
+                                echo "Hello world";
+                                echo '<div class="col-md-4 text-center">';
+                                echo '<img class="img-circle" src="http://placehold.it/140x140">';
+                                echo '<h2>'. $row['name'] . '</h2>';
+                                echo '<p>' . $row['name'] . '</p>';
+                                echo '</div>';
+                        }
+                }
+
+                mysqli_close($link);
+
+        ?>
+	</div>
+</div>
+  <!-- Three columns of text below the carousel >
   <div class="row">
     <div class="col-md-4 text-center">
       <img class="img-circle" src="http://placehold.it/140x140">
@@ -128,36 +148,10 @@
       <p>Improved support for mixins make the new Bootstrap 3 easier to customize.</p>
       <p><a class="btn btn-default" href="#">View details »</a></p>
     </div>
-  </div><!-- /.row -->
+  </div><!-- /.row -->-->
 
 
   <!-- START THE FEATURETTES -->
-
-  <hr class="featurette-divider">
-
-  <div class="featurette">
-    <img class="featurette-image img-circle pull-right" src="http://placehold.it/512">
-    <h2 class="featurette-heading">Responsive Design. <span class="text-muted">It'll blow your mind.</span></h2>
-    <p class="lead">In simple terms, a responsive web design figures out what resolution of device it's being served on. Flexible grids then size correctly to fit the screen.</p>
-  </div>
-
-  <hr class="featurette-divider">
-
-  <div class="featurette">
-    <img class="featurette-image img-circle pull-left" src="http://placehold.it/512">
-    <h2 class="featurette-heading">Smaller Footprint. <span class="text-muted">Lightweight.</span></h2>
-    <p class="lead">The new Bootstrap 3 promises to be a smaller build. The separate Bootstrap base and responsive.css files have now been merged into one. There is no more fixed grid, only fluid.</p>
-  </div>
-
-  <hr class="featurette-divider">
-
-  <div class="featurette">
-    <img class="featurette-image img-circle pull-right" src="http://placehold.it/512">
-    <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Flatness.</span></h2>
-    <p class="lead">A big design trend for 2013 is "flat" design. Gone are the days of excessive gradients and shadows. Designers are producing cleaner flat designs, and Bootstrap 3 takes advantage of this minimalist trend.</p>
-  </div>
-
-  <hr class="featurette-divider">
 
   <!-- /END THE FEATURETTES -->
 

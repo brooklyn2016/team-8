@@ -36,7 +36,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li class="active"><a href="profile.html">Profile<span class="sr-only">(current)</span></a></li>
-                <li><a href="file.html">Upload</a></li>
+                <li><a href="upload.form.php">Upload</a></li>
                 <li><a href="search.html">Search</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
@@ -52,7 +52,6 @@
             <div class="container">
                 <div class="carousel-caption">
                     <h1>User Name</h1>
-                    </p>
                 </div>
             </div>
         </div>
@@ -65,12 +64,23 @@
 
     <!-- Three columns of text below the carousel -->
     <div class="row">
-        <div class="col-md-4 text-center">
-            <img class="img-circle" src="http://placehold.it/140x140">
-            <h2>Video</h2>
-            <p>Video Description</p>
-            <p><a class="btn btn-default" href="#">Watch Video</a></p>
-        </div>
+        <?php
+		require_once('includes/config.php');
+		$query = 'SELECT * FROM Videos WHERE email="test_user@example.com"';
+		if ($result = mysqli_query($link, $query)) {
+			
+			while ($row = mysqli_fetch_assoc($result)) {
+				echo '<div class="col-md-4 text-center">';
+            			echo '<img class="img-circle" src="http://placehold.it/140x140">';
+            			echo '<h2>'. $row['name'] . '</h2>';
+            			echo '<p>' . $row['name'] . '</p>';
+        			echo '</div>';
+			}
+		}
+
+		mysqli_close($link);
+		
+	?>
     </div><!-- /.row -->
 
 </div><!-- /.container -->

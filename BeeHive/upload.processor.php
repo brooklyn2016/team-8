@@ -1,7 +1,8 @@
 <?php
+	require_once("includes/config.php");
 	$fileExistsFlag = 0; 
 	$fileName = $_FILES['Filename']['name'];
-	$link = mysqli_connect("localhost","root","team8","Beehive") or die("Error ".mysqli_error($link));
+	//$link = mysqli_connect("localhost","root","team8","Beehive") or die("Error ".mysqli_error($link));
 	/* 
 	*	Checking whether the file already exists in the destination folder 
 	*/
