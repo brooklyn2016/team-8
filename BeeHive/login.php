@@ -1,20 +1,20 @@
 <html>
    <div class = "container">
     <?php
-       include("includes/config.php");
+       require("includes/config.php");
        echo "maybe session start aint workin";
        session_start();
        echo "before the if";
-       if ($_SERVER["REQUEST_METHOD"] == "GET") {
+       if ($_SERVER[ 'REQUEST_METHOD' ] == "GET") {
 
-            $myusername = $_GET['username'] ;
-            $mypassword = $_GET['password'] ;
+            //$myusername = $_GET['username'] ;
+            //$mypassword = $_GET['password'] ;
 
             echo "the if is executed";
             // username and password sent from form
 
-          //$myusername = mysqli_real_escape_string($dbc, $_GET['username']);
-          //$mypassword = mysqli_real_escape_string($dbc, $_GET['password']);
+          $myusername = mysqli_real_escape_string($dbc, $_GET['username']);
+          $mypassword = mysqli_real_escape_string($dbc, $_GET['password']);
 
           $sql = "SELECT * FROM Users WHERE username = '$myusername' and password = '$mypassword'";
           $result = mysqli_query($db,$sql);
