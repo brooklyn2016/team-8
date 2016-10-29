@@ -1,8 +1,9 @@
 <?php
    include("includes/config.php");
    session_start();
-   
+   echo "before the if";
    if ($_SERVER["REQUEST_METHOD"] == "GET") {
+        echo "the if is executed";
       // username and password sent from form 
       
       $myusername = mysqli_real_escape_string($dbc, $_GET['username']);
