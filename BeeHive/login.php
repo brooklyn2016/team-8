@@ -2,11 +2,11 @@
    include("includes/config.php");
    session_start();
    
-   if ($_SERVER["REQUEST_METHOD"] == "POST") {
+   if ($_SERVER["REQUEST_METHOD"] == "GET") {
       // username and password sent from form 
       
-      $myusername = mysqli_real_escape_string($dbc, $_POST['username']);
-      $mypassword = mysqli_real_escape_string($dbc, $_POST['password']); 
+      $myusername = mysqli_real_escape_string($dbc, $_GET['username']);
+      $mypassword = mysqli_real_escape_string($dbc, $_GET['password']);
       
       $sql = "SELECT * FROM Users WHERE username = '$myusername' and password = '$mypassword'";
       $result = mysqli_query($db,$sql);
